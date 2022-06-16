@@ -21,6 +21,9 @@ def api_random_page():
     return config['web_clicker']['api_random_page']
 
 
+def api_get_page():
+    return config['web_clicker']['api_get_page']
+
 def text_fields_class():
     return config['web_clicker']['text_fields_class']
 

@@ -2,13 +2,12 @@ from selenium import webdriver
 import time
 import requests
 
-website_link = 'https://www.sixdegreesofwikipedia.com/'
-api_wiki_random_page = 'https://en.wikipedia.org/w/api.php?format=json&action=query&generator=random&grnnamespace=0&prop=revisions|images&rvprop=content&grnlimit=1'
+from internal.config import config
 
 
 def get_random_page():
     # Send request and get the response
-    response = requests.get(api_wiki_random_page)
+    response = requests.get(config.api_random_page())
     response_json = response.json()
 
     # Get pages from the response and the first key in the dictionary
@@ -21,7 +20,7 @@ def get_random_page():
 
 def click_button(driver):
     # Get text fields
-    text_fields = driver.find_elements_by_class_name("react-autosuggest__input")
+    text_fields = driver.find_elements_by_class_name(config.text_fields_class())
 
     # Clear text fields
     text_fields[0].clear()
@@ -32,7 +31,7 @@ def click_button(driver):
     text_fields[1].send_keys(get_random_page())
 
     # Click the button
-    button = driver.find_element_by_class_name("bojiJp")
+    button = driver.find_element_by_class_name(config.button_class())
     button.click()
     time.sleep(20)
     print(get_paths(driver))
@@ -40,7 +39,7 @@ def click_button(driver):
 
 def get_paths(driver):
     paths = []
-    blocks = driver.find_elements_by_class_name("lazyload-wrapper ")
+    blocks = driver.find_elements_by_class_name(config.blocks_class())
 
     for block in blocks:
         path = []
@@ -53,9 +52,10 @@ def get_paths(driver):
     return paths
 
 
-driver = webdriver.Firefox(executable_path=r'driver/geckodriver')
-driver.get(website_link)
+def launch():
+    print(config.driver_path())
+    driver = webdriver.Firefox(executable_path=config.driver_path())
+    driver.get(config.website_link())
 
-click_button(driver)
-#time.sleep(10)
-#click_button(driver)
+    click_button(driver)
+

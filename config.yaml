@@ -2,6 +2,7 @@ web_clicker:
   # Links
   website_link: https://www.sixdegreesofwikipedia.com/
   api_random_page: https://en.wikipedia.org/w/api.php?format=json&action=query&generator=random&grnnamespace=0&prop=revisions|images&rvprop=content&grnlimit=1
+  api_get_page: https://en.wikipedia.org/w/api.php?action=query&format=json&prop=revisions&titles={}&formatversion=2&rvprop=content&rvslots=*
 
   # Web elements
   text_fields_class: "react-autosuggest__input"
@@ -9,9 +10,8 @@ web_clicker:
   blocks_class: "lazyload-wrapper "
 
   # Driver
-  driver_path: driver/geckodriver
+  driver_path: internal/dataset_generator/driver/geckodriver
 
 dataset_generator:
   most_frequent_words: internal/dataset_generator/inputs/most_frequent_words.txt
-
   dataset_path: internal/dataset_generator/output/dataset.csv

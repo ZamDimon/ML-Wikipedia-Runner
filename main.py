@@ -1,6 +1,3 @@
-from internal.dataset_generator import csv_interactor
-from internal.dataset_generator import pair
+from internal.dataset_generator import web_clicker
 
-csv_interactor.push_pair(pair.Pair("Hollow_Knight", "Albert_Einstein", 2))
-csv_interactor.write()
-print(csv_interactor.read()[0])
+web_clicker.launch()

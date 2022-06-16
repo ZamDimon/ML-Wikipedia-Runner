@@ -17,7 +17,7 @@ def get(title):
     page_info = []
     page_info_dictionary = {}
 
-    request_api = 'https://en.wikipedia.org/w/api.php?action=query&format=json&prop=revisions&titles={}&formatversion=2&rvprop=content&rvslots=*'.format(title)
+    request_api = config.api_get_page().format(title)
     response = requests.get(request_api)
     response_json = response.json()
 
