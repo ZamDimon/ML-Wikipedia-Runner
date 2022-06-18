@@ -6,6 +6,7 @@ rows = []
 
 
 def push_pair(pair):
+    print('appended pair {} and {}'.format(pair.title1, pair.title2))
     rows.append(pair.csv_data())
 
 
@@ -27,10 +28,12 @@ def get_header():
 
 
 def write():
+    global rows
     with open(config.dataset_path(), 'w', encoding='UTF8') as dataset:
         writer = csv.writer(dataset)
         writer.writerow(get_header())
         writer.writerows(rows)
+    rows = []
 
 
 def read():
@@ -39,7 +42,6 @@ def read():
         csvreader = csv.reader(dataset)
         next(csvreader)
         for experiment in csvreader:
-            print(experiment)
             experiments.append(experiment)
 
     return experiments
