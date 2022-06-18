@@ -8,6 +8,8 @@ web_clicker:
   text_fields_class: "react-autosuggest__input"
   button_class: "bojiJp"
   blocks_class: "lazyload-wrapper "
+  error_text_class: "jMdJku"
+  no_found_text_class: "irrzmp"
 
   # Driver
   driver_path: internal/dataset_generator/driver/geckodriver

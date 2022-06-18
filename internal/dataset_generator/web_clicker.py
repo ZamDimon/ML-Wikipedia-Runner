@@ -12,10 +12,13 @@ from internal.dataset_generator import pair
 import time
 import requests
 
+UPDATING_FREQUENCY = 0.1
+LOAD_DELAY = 1.5
 
-def element_exists(driver, class_name):
+
+def element_exists(driver, by, class_name):
     try:
-        driver.find_element(By.CLASS_NAME, class_name)
+        driver.find_element(by, class_name)
     except NoSuchElementException:
         return False
     return True
@@ -51,44 +54,61 @@ def click_button(driver):
     button.click()
 
     # If button did not appear, the blocks haven't loaded yet
-    while not element_exists(driver, config.blocks_class()):
-        time.sleep(0.1)
+    while not element_exists(driver, By.CLASS_NAME, config.button_class()):
+        time.sleep(UPDATING_FREQUENCY)
 
-    time.sleep(1)
+    # Wait for the elements to be loaded
+    time.sleep(LOAD_DELAY)
 
-    # Error button: sc-lmgQwP jMdJku
-    # 1977–78 Penn State Nittany Lions basketball team and Jan de Wael I
-    if element_exists(driver, "jMdJku"):
+    # If the error occurred, just click the button again
+    if element_exists(driver, By.CLASS_NAME, config.error_text_class()) or element_exists(driver, By.XPATH, "//*[text()='No path']"):
         click_button(driver)
 
-    while contains_null(get_paths(driver)):
+    # Wait for blocks to be loaded
+    while not element_exists(driver, By.CLASS_NAME, config.blocks_class()):
+        time.sleep(UPDATING_FREQUENCY)
+
+    # Wait a bit more to assure that everything is uploaded
+    time.sleep(LOAD_DELAY)
+
+    # If the array was not fully loaded, scroll down and update elements
+    while contains_empty(get_paths(driver)):
         driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
 
-    paths = filter_paths(get_paths(driver))
+    # Get all paths
+    paths = get_paths(driver)
     for path in paths:
         push_path(path)
+
     csv_interactor.write()
+
+    # Click button again and repeat the process
     click_button(driver)
 
 
-def contains_null(array):
+def contains_empty(array):
     for element in array:
+        # If array is empty
         if len(element) == 0:
             return True
+
     return False
 
 
 def get_paths(driver):
     paths = []
+    # Find block elements
     blocks = driver.find_elements(By.CLASS_NAME, config.blocks_class())
 
     for block in blocks:
         path = []
 
-        another_object = block.find_element(By.XPATH, './/*')
-        path_objects = another_object.find_elements(By.TAG_NAME, "a")
+        # Find child div for the block (which in turn contains all hrefs)
+        child_div = block.find_element(By.XPATH, './/*')
+        path_objects = child_div.find_elements(By.TAG_NAME, "a")
 
         for path_object in path_objects:
+            # Get href attribute to retrieve a link
             path.append(path_object.get_attribute("href").split('/wiki/')[1])
 
         paths.append(path)
@@ -96,27 +116,17 @@ def get_paths(driver):
     return paths
 
 
-def filter_paths(paths):
-    # If paths is either an empty set or a single-element set, return it
-    if len(paths) <= 1:
-        return paths
-
-    filtered_paths = [paths[0]]
-    for path in paths[1:]:
-        if len(set(paths[0]) ^ set(path))/2 >= 3:
-            filtered_paths.append(path)
-    return filtered_paths
-
-
 def push_path(path):
     for i in range(1, len(path)):
+        # Add a pair to the csv_interactor
         csv_interactor.push_pair(pair.Pair(path[0], path[i], i))
 
 
 def launch():
-    print(config.driver_path())
+    # Initialize a driver
     driver = webdriver.Firefox(executable_path=config.driver_path())
+    # Open a page
     driver.get(config.website_link())
-
+    # Click the button
     click_button(driver)
 

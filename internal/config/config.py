@@ -24,6 +24,7 @@ def api_random_page():
 def api_get_page():
     return config['web_clicker']['api_get_page']
 
+
 def text_fields_class():
     return config['web_clicker']['text_fields_class']
 
@@ -34,6 +35,14 @@ def button_class():
 
 def blocks_class():
     return config['web_clicker']['blocks_class']
+
+
+def error_text_class():
+    return config['web_clicker']['error_text_class']
+
+
+def no_found_text_class():
+    return config['web_clicker']['no_found_text_class']
 
 
 def most_frequent_words():
