@@ -13,6 +13,7 @@ web_clicker:
 
   # Driver
   driver_path: internal/dataset_generator/driver/geckodriver
+  driver_path_mac: internal/dataset_generator/driver/geckodriver_mac
 
 dataset_generator:
   most_frequent_words: internal/dataset_generator/inputs/most_frequent_words.txt

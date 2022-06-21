@@ -11,6 +11,7 @@ from internal.dataset_generator import pair
 # Other
 import time
 import requests
+import platform
 
 UPDATING_FREQUENCY = 0.1
 LOAD_DELAY = 1.5
@@ -77,8 +78,9 @@ def click_button(driver):
 
     # Get all paths
     paths = get_paths(driver)
+    df = [dict(), dict()]
     for path in paths:
-        push_path(path)
+        push_path(path, df)
 
     csv_interactor.write()
 
@@ -116,10 +118,15 @@ def get_paths(driver):
     return paths
 
 
-def push_path(path):
-    for i in range(1, len(path)):
-        # Add a pair to the csv_interactor
-        csv_interactor.push_pair(pair.Pair(path[0], path[i], i))
+def push_path(path, df):
+    limit = 3
+
+    for i in range(0, len(path)):
+        for j in range(i+1, len(path)):
+            if df[0].get(path[i], 0) < limit and df[1].get(path[j], 0) < limit:
+                csv_interactor.push_pair(pair.Pair(path[i], path[j], j-i))
+                df[0][path[i]] = df[0].get(path[i], 0) + 1
+                df[1][path[j]] = df[1].get(path[j], 0) + 1
 
 
 def launch():
