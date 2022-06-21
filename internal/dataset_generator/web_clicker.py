@@ -13,9 +13,6 @@ import time
 import requests
 import platform
 
-UPDATING_FREQUENCY = 0.1
-LOAD_DELAY = 1.5
-
 
 def element_exists(driver, by, class_name):
     try:
@@ -56,10 +53,10 @@ def click_button(driver):
 
     # If button did not appear, the blocks haven't loaded yet
     while not element_exists(driver, By.CLASS_NAME, config.button_class()):
-        time.sleep(UPDATING_FREQUENCY)
+        time.sleep(config.updating_frequency())
 
     # Wait for the elements to be loaded
-    time.sleep(LOAD_DELAY)
+    time.sleep(config.load_delay())
 
     # If the error occurred, just click the button again
     if element_exists(driver, By.CLASS_NAME, config.error_text_class()) or element_exists(driver, By.XPATH, "//*[text()='No path']"):
@@ -67,10 +64,10 @@ def click_button(driver):
 
     # Wait for blocks to be loaded
     while not element_exists(driver, By.CLASS_NAME, config.blocks_class()):
-        time.sleep(UPDATING_FREQUENCY)
+        time.sleep(config.updating_frequency())
 
     # Wait a bit more to assure that everything is uploaded
-    time.sleep(LOAD_DELAY)
+    time.sleep(config.load_delay())
 
     # If the array was not fully loaded, scroll down and update elements
     while contains_empty(get_paths(driver)):

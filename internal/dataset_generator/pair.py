@@ -7,6 +7,9 @@ class Pair:
         self.title2 = title2
         self.distance = distance
 
+    def as_array(self):
+        return [self.title1, self.title2, self.distance]
+
     def csv_data(self):
         # Get page contents
         page_info1 = page_info.get(self.title1)

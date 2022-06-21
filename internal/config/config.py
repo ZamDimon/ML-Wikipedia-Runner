@@ -55,3 +55,11 @@ def most_frequent_words():
 
 def dataset_path():
     return os.path.join(script_path, config['dataset_generator']['dataset_path'])
+
+
+def load_delay():
+    return config['web_clicker']['load_delay']
+
+
+def updating_frequency():
+    return config['web_clicker']['updating_frequency']

@@ -15,6 +15,10 @@ web_clicker:
   driver_path: internal/dataset_generator/driver/geckodriver
   driver_path_mac: internal/dataset_generator/driver/geckodriver_mac
 
+  # Delays
+  load_delay: 2.0
+  updating_frequency: 0.1
+
 dataset_generator:
   most_frequent_words: internal/dataset_generator/inputs/most_frequent_words.txt
   dataset_path: internal/dataset_generator/output/dataset.csv

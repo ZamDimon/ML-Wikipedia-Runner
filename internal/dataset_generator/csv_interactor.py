@@ -8,7 +8,7 @@ rows = []
 def push_pair(pair):
     # Print that the pair was appended
     print('appended pair {} and {}'.format(pair.title1, pair.title2))
-    rows.append(pair.csv_data())
+    rows.append(pair.as_array())
 
 
 def get_header():
@@ -31,7 +31,7 @@ def get_header():
 
 def write():
     global rows
-    with open(config.dataset_path(), 'w', encoding='UTF8') as dataset:
+    with open(config.dataset_path(), 'a', encoding='UTF8') as dataset:
         # Initialize writer
         writer = csv.writer(dataset)
         # Write all rows
