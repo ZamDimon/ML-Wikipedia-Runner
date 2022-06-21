@@ -1,5 +1,6 @@
 import yaml
 import os
+import platform
 from pathlib import Path
 
 script_path = Path(__file__).parent.parent.parent
@@ -10,7 +11,10 @@ with open(config_path, 'r') as stream:
 
 
 def driver_path():
-    return os.path.join(script_path, config['web_clicker']['driver_path'])
+    if platform.system() != "Darwin":
+        return os.path.join(script_path, config['web_clicker']['driver_path'])
+    else:
+        return os.path.join(script_path, config['web_clicker']['driver_path_mac'])
 
 
 def website_link():
