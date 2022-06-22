@@ -1,4 +1,4 @@
-from internal.dataset_generator import web_clicker
+from internal.dataset_generator import web_clicker, charter
 import argparse
 import logging
 
@@ -9,12 +9,15 @@ def main():
                         type=str,
                         help='program mode',
                         required=True,
-                        choices=['generate'])
+                        choices=['generate', 'csv-chart'])
 
     args = parser.parse_args()
 
     if args.mode == 'generate':
         web_clicker.launch()
+        return
+    elif args.mode == 'csv-chart':
+        charter.show_chart()
         return
     else:
         logging.error('Specified mode does not exist')

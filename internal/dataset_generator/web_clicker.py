@@ -1,4 +1,6 @@
 # Selenium imports
+import random
+
 from selenium import webdriver
 from selenium.common import NoSuchElementException
 from selenium.webdriver.common.by import By
@@ -119,7 +121,8 @@ def push_path(path, df):
     limit = 3
 
     for i in range(0, len(path)):
-        for j in range(i+1, len(path)):
+        # Added reverse order of iteration
+        for j in reversed(range(i+1, len(path))):
             if df[0].get(path[i], 0) < limit and df[1].get(path[j], 0) < limit:
                 csv_interactor.push_pair(pair.Pair(path[i], path[j], j-i))
                 df[0][path[i]] = df[0].get(path[i], 0) + 1

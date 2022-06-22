@@ -2,13 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3e19a2e9-4098-4832-bde3-97c4822765c7" name="Changes" comment="Changes">
+      <change afterPath="$PROJECT_DIR$/internal/dataset_generator/charter.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/internal/config/config.py" beforeDir="false" afterPath="$PROJECT_DIR$/internal/config/config.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/internal/dataset_generator/csv_interactor.py" beforeDir="false" afterPath="$PROJECT_DIR$/internal/dataset_generator/csv_interactor.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/internal/dataset_generator/output/dataset.csv" beforeDir="false" afterPath="$PROJECT_DIR$/internal/dataset_generator/output/dataset.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/internal/dataset_generator/pair.py" beforeDir="false" afterPath="$PROJECT_DIR$/internal/dataset_generator/pair.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/internal/dataset_generator/web_clicker.py" beforeDir="false" afterPath="$PROJECT_DIR$/internal/dataset_generator/web_clicker.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -36,14 +35,14 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "/home/dima/Projects/Machine Learning/ML-Wikipedia-Runner"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/home/dima/Projects/Machine Learning/ML-Wikipedia-Runner&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/driver" />
@@ -97,7 +96,8 @@
       <workItem from="1655418699023" duration="3123000" />
       <workItem from="1655422013388" duration="14711000" />
       <workItem from="1655563778969" duration="10942000" />
-      <workItem from="1655850745534" duration="2681000" />
+      <workItem from="1655850745534" duration="6329000" />
+      <workItem from="1655935078332" duration="1733000" />
     </task>
     <servers />
   </component>

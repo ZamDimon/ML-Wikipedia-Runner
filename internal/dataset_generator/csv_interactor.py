@@ -1,5 +1,6 @@
 import csv
 from internal.config import config
+import collections
 
 # Rows to be pushed into dataset
 rows = []
@@ -52,3 +53,27 @@ def read():
             experiments.append(experiment)
 
     return experiments
+
+
+def get_distance_distribution():
+    distribution = {}
+    elements_number = 0
+
+    with open(config.dataset_path(), 'r') as dataset:
+        # Initialize csv reader
+        csvreader = csv.reader(dataset)
+        # Omit the header
+        next(csvreader)
+
+        for experiment in csvreader:
+            elements_number += 1
+            distance = experiment[2]
+            if distance in distribution.keys():
+                distribution[distance] += 1
+            else:
+                distribution[distance] = 1
+
+        for key in distribution:
+            distribution[key] = distribution[key] / elements_number
+
+        return collections.OrderedDict(sorted(distribution.items()))
