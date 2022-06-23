@@ -118,15 +118,17 @@ def get_paths(driver):
 
 
 def push_path(path, df):
-    limit = 3
+    limit = 5
 
     for i in range(0, len(path)):
         # Added reverse order of iteration
         for j in reversed(range(i+1, len(path))):
             if df[0].get(path[i], 0) < limit and df[1].get(path[j], 0) < limit:
-                csv_interactor.push_pair(pair.Pair(path[i], path[j], j-i))
-                df[0][path[i]] = df[0].get(path[i], 0) + 1
-                df[1][path[j]] = df[1].get(path[j], 0) + 1
+                if j-i>1 or (j-i==1 and random.randint(0, 20) == 3):
+                    if j - i > 2 or (j - i == 2 and random.randint(0, 15) == 2):
+                        csv_interactor.push_pair(pair.Pair(path[i], path[j], j-i))
+                        df[0][path[i]] = df[0].get(path[i], 0) + 1
+                        df[1][path[j]] = df[1].get(path[j], 0) + 1
 
 
 def launch():
