@@ -2,12 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3e19a2e9-4098-4832-bde3-97c4822765c7" name="Changes" comment="Changes">
-      <change afterPath="$PROJECT_DIR$/internal/dataset_generator/charter.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/internal/dataset_generator/coef_calc.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/internal/dataset_generator/output/dataset_saved.csv" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/internal/dataset_generator/csv_interactor.py" beforeDir="false" afterPath="$PROJECT_DIR$/internal/dataset_generator/csv_interactor.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/internal/dataset_generator/output/dataset.csv" beforeDir="false" afterPath="$PROJECT_DIR$/internal/dataset_generator/output/dataset.csv" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/internal/dataset_generator/web_clicker.py" beforeDir="false" afterPath="$PROJECT_DIR$/internal/dataset_generator/web_clicker.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -35,14 +34,9 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/home/dima/Projects/Machine Learning/ML-Wikipedia-Runner&quot;
-  }
-}</component>
+  <component name="PropertiesComponent">
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+  </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/driver" />
@@ -54,7 +48,28 @@
       <recent name="$PROJECT_DIR$/dataset_generator/helpers" />
     </key>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Python.coef_calc">
+    <configuration name="coef_calc" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="ML-Wikipedia-Type" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/internal/dataset_generator" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/internal/dataset_generator/coef_calc.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <configuration name="main" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="ML-Wikipedia-Type" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -79,6 +94,7 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.coef_calc" />
         <item itemvalue="Python.main" />
       </list>
     </recent_temporary>
@@ -126,8 +142,20 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/internal/dataset_generator/web_clicker.py</url>
+          <line>1</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>
