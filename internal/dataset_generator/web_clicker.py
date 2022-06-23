@@ -124,8 +124,8 @@ def push_path(path, df):
         # Added reverse order of iteration
         for j in reversed(range(i+1, len(path))):
             if df[0].get(path[i], 0) < limit and df[1].get(path[j], 0) < limit:
-                if j-i>1 or (j-i==1 and random.randint(0, 20) == 3):
-                    if j - i > 2 or (j - i == 2 and random.randint(0, 15) == 2):
+                if j-i>1 or (j-i==1 and random.randint(0, 40) == 3):
+                    if j - i > 2 or (j - i == 2 and random.randint(0, 6) == 2) or (j-i==1):
                         csv_interactor.push_pair(pair.Pair(path[i], path[j], j-i))
                         df[0][path[i]] = df[0].get(path[i], 0) + 1
                         df[1][path[j]] = df[1].get(path[j], 0) + 1
