@@ -2,11 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3e19a2e9-4098-4832-bde3-97c4822765c7" name="Changes" comment="Changes">
-      <change afterPath="$PROJECT_DIR$/internal/dataset_generator/coef_calc.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/internal/dataset_generator/output/dataset_saved.csv" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/dataset_generator/charter.py" beforeDir="false" afterPath="$PROJECT_DIR$/internal/dataset_generator/charter.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/internal/dataset_generator/output/dataset.csv" beforeDir="false" afterPath="$PROJECT_DIR$/internal/dataset_generator/output/dataset.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/internal/dataset_generator/web_clicker.py" beforeDir="false" afterPath="$PROJECT_DIR$/internal/dataset_generator/web_clicker.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -61,6 +60,7 @@
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/internal/dataset_generator/coef_calc.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
@@ -142,7 +142,6 @@
         </entry>
       </map>
     </option>
-    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />

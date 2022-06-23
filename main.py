@@ -9,15 +9,18 @@ def main():
                         type=str,
                         help='program mode',
                         required=True,
-                        choices=['generate', 'csv-chart'])
+                        choices=['generate', 'six-degrees-chart', 'generator-chart'])
 
     args = parser.parse_args()
 
     if args.mode == 'generate':
         web_clicker.launch()
         return
-    elif args.mode == 'csv-chart':
-        charter.show_chart()
+    elif args.mode == 'six-degrees-chart':
+        charter.draw_chart('six_degrees')
+        return
+    elif args.mode == 'generator-chart':
+        charter.draw_chart('generator')
         return
     else:
         logging.error('Specified mode does not exist')
@@ -26,3 +29,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+    

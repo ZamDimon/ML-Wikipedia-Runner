@@ -1,38 +1,44 @@
+import numpy
 import matplotlib.pyplot as plt
+import math
 from internal.dataset_generator import csv_interactor
 
+# Six degrees of Wikipedia data
+NUMBER_OF_SAMPLES = 373017
+SIX_DEGREES_DATA = numpy.array([524, 10216, 90068, 183172, 67754, 16317, 3738, 1228])
 
-def show_chart():
-    distribution = csv_interactor.get_distance_distribution()
-    print(distribution)
+# Normalized array to be displayed on the chart
+SIX_DEGREES_DATA_NORMALIZED = {}
+for key, value in enumerate(SIX_DEGREES_DATA):
+    SIX_DEGREES_DATA_NORMALIZED[str(key)] = value / NUMBER_OF_SAMPLES
 
-    # X-coordinates of left sides of bars
-    left = []
-    for key in distribution:
-        left.append(key)
 
-    # Heights of bars
-    max_height = 500
-    height = []
+def normal_distribution_function(val):
+    sigma = 0.8
+    return (1/(sigma*math.sqrt(2*math.pi))) * math.exp((-(val - 3)**2)/(2*(sigma**2)))
 
-    for key in distribution:
-        height.append(distribution[key] * max_height)
 
-    # Labels for bars
-    tick_label = []
-    for key in distribution:
-        tick_label.append(str(key))
+# Possible values: six_degrees, generator
+def draw_chart(mode='six_degrees'):
+    data_to_display = {}
 
-    # Plotting a bar chart
-    plt.bar(left, height, tick_label=tick_label,
-            width=0.8, color=['red', 'green'])
+    # Set data to display
+    if mode == 'generator':
+        data_to_display = csv_interactor.get_distance_distribution()
+    elif mode == 'six_degrees':
+        data_to_display = SIX_DEGREES_DATA_NORMALIZED
 
-    # Naming the x-axis
-    plt.xlabel('Distance')
-    # Naming the y-axis
-    plt.ylabel('Number of pairs')
-    # Plot title
-    plt.title('Distances distribution')
+    # Plot the bar
+    plt.bar(data_to_display.keys(), data_to_display.values(), width=0.8, color=['#c5c9cb', '#979ea2', '#646f75'])
 
-    # Function to show the plot
+    # Plot the normal distribution
+    x_points = numpy.arange(0, 6, 0.1)
+    normal_distribution = numpy.frompyfunc(normal_distribution_function, 1, 1)
+    y_points = normal_distribution(x_points)
+
+    plt.plot(x_points, y_points, 'r--')
+
+    title = "Dataset and normal distribution"
+    plt.title(title)
+
     plt.show()
