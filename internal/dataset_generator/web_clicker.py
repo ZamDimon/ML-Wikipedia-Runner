@@ -71,20 +71,23 @@ def click_button(driver):
     # Wait a bit more to assure that everything is uploaded
     time.sleep(config.load_delay())
 
-    # If the array was not fully loaded, scroll down and update elements
-    while contains_empty(get_paths(driver)):
-        driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
+    try:
+        # If the array was not fully loaded, scroll down and update elements
+        while contains_empty(get_paths(driver)):
+            driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
 
-    # Get all paths
-    paths = get_paths(driver)
-    df = [dict(), dict()]
-    for path in paths:
-        push_path(path, df)
+        # Get all paths
+        paths = get_paths(driver)
+        df = [dict(), dict()]
+        for path in paths:
+            push_path(path, df)
 
-    csv_interactor.write()
+        csv_interactor.write()
 
-    # Click button again and repeat the process
-    click_button(driver)
+        # Click button again and repeat the process
+        click_button(driver)
+    except:
+        click_button(driver)
 
 
 def contains_empty(array):
