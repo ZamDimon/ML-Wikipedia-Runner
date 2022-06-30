@@ -1,2 +1,2 @@
 # ML-Wikipedia-Runner
-Project that predicts 
+Machine Learning model that predicts which page best to choose to reach the goal page.
