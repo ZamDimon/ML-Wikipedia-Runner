@@ -3,10 +3,19 @@ from internal.config import config
 import requests
 import re
 
+# We will define this variable as global to avoid
+# reading txt file while running the functions
+most_frequent_words = config.most_frequent_words()
+NO_CONTENT = 'No Content'
+
 
 def page_content(response_json):
     pages = response_json["query"]["pages"]
     page = pages[0]
+    if 'missing' in page:
+        if page['missing'] is True:
+            return NO_CONTENT
+
     revision = page["revisions"][0]
     content = revision["slots"]["main"]["content"]
 
@@ -14,12 +23,11 @@ def page_content(response_json):
 
 
 def get(title):
-    page_info = []
-    page_info_dictionary = {}
+    # Declare words_dictionary based on keys from most frequent statistics
+    words_dictionary = dict.fromkeys(most_frequent_words, 0)
 
-    # Make API request
+    # Compose API request string
     request_api = config.api_get_page().format(title)
-
     # Make request and get the corresponding response
     response = requests.get(request_api)
     # Convert it to json format
@@ -27,17 +35,17 @@ def get(title):
 
     # Get raw content
     content = page_content(response_json)
+
+    # If content is missing, print it out
+    if content == NO_CONTENT:
+        return NO_CONTENT
+
     # Get array of words from the content
     words = re.findall(r'\w+', content)
 
     for word in words:
-        # If word already exists, increment the corresponding value in dictionary. Else initialize it
-        if word in page_info_dictionary:
-            page_info_dictionary[word] += 1
-        else:
-            page_info_dictionary[word] = 1
+        # If word does not exist in dictionary, omit it. Otherwise, increment the value
+        if word in words_dictionary:
+            words_dictionary[word] += 1
 
-    for word in config.most_frequent_words():
-        page_info.append(page_info_dictionary[word] if word in page_info_dictionary else 0)
-
-    return page_info
+    return words_dictionary.values()

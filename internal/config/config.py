@@ -57,6 +57,10 @@ def dataset_path():
     return os.path.join(script_path, config['dataset_generator']['dataset_path'])
 
 
+def dataset_with_features_path():
+    return os.path.join(script_path, config['dataset_generator']['dataset_with_features_path'])
+
+
 def load_delay():
     return config['web_clicker']['load_delay']
 

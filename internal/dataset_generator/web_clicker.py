@@ -4,10 +4,11 @@ import random
 from selenium import webdriver
 from selenium.common import NoSuchElementException
 from selenium.webdriver.common.by import By
+from selenium.common import StaleElementReferenceException
 
 # Internal imports
 from internal.config import config
-from internal.dataset_generator import csv_interactor
+from internal.dataset_generator import csv_interactor_no_features
 from internal.dataset_generator import pair
 
 # Other
@@ -82,7 +83,7 @@ def click_button(driver):
         for path in paths:
             push_path(path, df)
 
-        csv_interactor.write()
+        csv_interactor_no_features.write()
 
         # Click button again and repeat the process
         click_button(driver)
@@ -129,7 +130,7 @@ def push_path(path, df):
             if df[0].get(path[i], 0) < limit and df[1].get(path[j], 0) < limit:
                 if j-i>1 or (j-i==1 and random.randint(0, 40) == 3):
                     if j - i > 2 or (j - i == 2 and random.randint(0, 6) == 2) or (j-i==1):
-                        csv_interactor.push_pair(pair.Pair(path[i], path[j], j-i))
+                        csv_interactor_no_features.push_pair(pair.Pair(path[i], path[j], j-i))
                         df[0][path[i]] = df[0].get(path[i], 0) + 1
                         df[1][path[j]] = df[1].get(path[j], 0) + 1
 

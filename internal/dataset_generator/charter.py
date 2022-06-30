@@ -1,7 +1,7 @@
 import numpy
 import matplotlib.pyplot as plt
 import math
-from internal.dataset_generator import csv_interactor
+from internal.dataset_generator import csv_interactor_no_features
 import collections
 
 # Six degrees of Wikipedia data
@@ -25,7 +25,7 @@ def draw_chart(mode='six_degrees'):
 
     # Set data to display
     if mode == 'generator':
-        data_to_display = csv_interactor.get_distance_distribution()
+        data_to_display = csv_interactor_no_features.get_distance_distribution()
     elif mode == 'six_degrees':
         data_to_display = SIX_DEGREES_DATA_NORMALIZED
 

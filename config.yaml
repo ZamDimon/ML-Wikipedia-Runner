@@ -20,5 +20,6 @@ web_clicker:
   updating_frequency: 0.1
 
 dataset_generator:
-  most_frequent_words: internal/dataset_generator/inputs/most_frequent_words.txt
+  most_frequent_words: internal/dataset_generator/inputs/20k.txt
   dataset_path: internal/dataset_generator/output/dataset.csv
+  dataset_with_features_path: internal/dataset_generator/output/dataset_features.csv
