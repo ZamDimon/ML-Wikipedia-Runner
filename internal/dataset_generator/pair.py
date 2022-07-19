@@ -15,7 +15,7 @@ class Pair:
         # Get page contents
         page_info1 = page_info.get(self.title1)
         page_info2 = page_info.get(self.title2)
-
+        
         # If one of the page infos is empty, omit them
         if page_info1 == page_info.NO_CONTENT or page_info2 == page_info.NO_CONTENT:
             return NO_DATA
