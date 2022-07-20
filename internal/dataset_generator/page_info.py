@@ -23,23 +23,24 @@ def page_content(response_json):
 
 
 def get(title):
+
     # Declare words_dictionary based on keys from most frequent statistics
     words_dictionary = dict.fromkeys(most_frequent_words, 0)
-
+    
     # Compose API request string
     request_api = config.api_get_page().format(title)
     # Make request and get the corresponding response
     response = requests.get(request_api)
     # Convert it to json format
     response_json = response.json()
-
+    
     # Get raw content
     content = page_content(response_json)
 
     # If content is missing, print it out
     if content == NO_CONTENT:
         return NO_CONTENT
-
+    print(type(content))
     # Get array of words from the content
     words = re.findall(r'\w+', content)
 
@@ -48,4 +49,5 @@ def get(title):
         if word in words_dictionary:
             words_dictionary[word] += 1
 
-    return words_dictionary.values()
+    #return words_dictionary.values()
+    return [content]
