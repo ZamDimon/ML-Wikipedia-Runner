@@ -3,7 +3,6 @@ import xgboost as xgb
 import sys
 from internal.dataset_generator import page_info
 def predict(title1, title2):
-    print(sys.path)
     model_path = '../internal/model/0001.model'
     tfidf_path = '../internal/model/tfidf.pkl'
     bst = xgb.Booster({'nthread': 4})  # init model
