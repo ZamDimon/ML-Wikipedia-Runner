@@ -10,7 +10,7 @@ from rich.progress import Progress
 
 # Internal imports
 sys.path.append('..')
-from internal.model.helper import get_input
+from internal.model import predictions
 
 # Maximum number of rows to be displayed
 rows_limit = 100
@@ -18,8 +18,7 @@ rows_limit = 100
 
 def get_distance(page, target):
     page = page.replace(' ', '_')
-    model_input = get_input(page, target)
-    return random.uniform(1.0, 6.0)
+    return predictions.predict(page, target)[0]
 
 
 def get_links(title):
@@ -104,7 +103,10 @@ def print_table(title, target):
 
 
 if __name__ == "__main__":
+    # Read inputs
     current_page = Prompt.ask("Enter your current page")
     target_page = Prompt.ask("Enter your target page")
 
-    print_table(current_page, target_page)
+    predict_q2_tfidf = predictions.get_page_predict(target_page)
+
+    print_table(current_page, predict_q2_tfidf)

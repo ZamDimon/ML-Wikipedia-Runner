@@ -40,7 +40,7 @@ def get(title):
     # If content is missing, print it out
     if content == NO_CONTENT:
         return NO_CONTENT
-    print(type(content))
+
     # Get array of words from the content
     words = re.findall(r'\w+', content)
 
