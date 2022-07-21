@@ -1,10 +1,10 @@
 # ML-Wikipedia-Runner
 Machine Learning model that predicts which page best to choose to reach the goal page.
 
-This is a final project for "Introduction to Machine Learning by Università di Macerata" course. Created by Dmytro Zakharov, David Kvarachelia, and Danya Korenkov.
+This is a final project for "Introduction to Machine Learning by Università di Macerata" course. Created by Dmytro Zakharov, Daniil Korenkov, Kvaratskheliia David.
 
 ## Project presentation
-You can download it here.
+You can download it [here](https://drive.google.com/file/d/1JzHXeJ98Lp0u9z3MlC1IXrBS8sa7xDpq/view?usp=sharing) or from the `presentation` folder.
 
 ## What is included in the project?
 
